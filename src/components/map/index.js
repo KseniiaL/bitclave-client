@@ -39,6 +39,7 @@ class MapComponent extends Component {
             lng: 0,
             zoom: 14,
             polygons: [],
+            maxPeople: 10,
             toolbarValues: {
                 sex: {
                     female: false,
@@ -106,10 +107,13 @@ class MapComponent extends Component {
         });
         axios.post('/api/search', this.state.toolbarValues)
             .then(res=>{
-                this.setState({polygons: Object.values(res.data.areas)});
+                this.setState({
+                    polygons: Object.values(res.data.areas),
+                    maxPeople: res.data.max
+                });
                 res.data.areas.map(el=>{
                     let arr = Object.values(el.points);
-                    let polygon = L.polygon(arr, {color: 'blue', opacity: Math.random()}).addTo(this.leafletElement);
+                    let polygon = L.polygon(arr, {color: 'blue', opacity: el.peoples / this.state.maxPeople}).addTo(this.leafletElement);
                     polygon.bindTooltip(el.peoples + " people");
                     this.figuresList.push(polygon);
                 });
