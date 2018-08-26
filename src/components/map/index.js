@@ -377,37 +377,37 @@ class MapComponent extends Component {
                                             <Checkbox
                                                 onCheck={this.handleCheck.bind(this, '18-24')}
                                                 checked={this.state.toolbarValues.age['18-24']}
-                                                style={{width: 130}}
+                                                style={{width: 130, minWidth: '30%'}}
                                                 label="18-24"
                                             />
                                             <Checkbox
                                                 onCheck={this.handleCheck.bind(this, '25-34')}
                                                 checked={this.state.toolbarValues.age['25-34']}
-                                                style={{width: 130}}
+                                                style={{width: 130, minWidth: '30%'}}
                                                 label="25-34"
                                             />
                                             <Checkbox
                                                 onCheck={this.handleCheck.bind(this, '35-44')}
                                                 checked={this.state.toolbarValues.age['35-44']}
-                                                style={{width: 130}}
+                                                style={{width: 130, minWidth: '30%'}}
                                                 label="35-44"
                                             />
                                             <Checkbox
                                                 onCheck={this.handleCheck.bind(this, '45-54')}
                                                 checked={this.state.toolbarValues.age['45-54']}
-                                                style={{width: 130}}
+                                                style={{width: 130, minWidth: '30%'}}
                                                 label="45-54"
                                             />
                                             <Checkbox
                                                 onCheck={this.handleCheck.bind(this, '55-64')}
                                                 checked={this.state.toolbarValues.age['55-64']}
-                                                style={{width: 130}}
+                                                style={{width: 130, minWidth: '30%'}}
                                                 label="55-64"
                                             />
                                             <Checkbox
                                                 onCheck={this.handleCheck.bind(this, '65+')}
                                                 checked={this.state.toolbarValues.age['65+']}
-                                                style={{width: 130}}
+                                                style={{width: 130, minWidth: '30%'}}
                                                 label="65+"
                                             />
                                         </div>
@@ -418,7 +418,7 @@ class MapComponent extends Component {
                                 <p>Покупательская способность</p>
                                 <FlatButton primary label="Очистить" onClick={this.clearValues.bind(this, 1)}/>
                             </div>
-                            <Paper className="toolBar_element" style={{display: 'flex', flexWrap: 'wrap'}} zDepth={1}>
+                            <Paper className="toolBar_element" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}} zDepth={1}>
                                 <SelectField
                                     floatingLabelText="Доход"
                                     onChange={this.handleChange.bind(this, 'salary')}
