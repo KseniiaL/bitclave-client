@@ -89,8 +89,21 @@ class MapComponent extends Component {
         });
     }
 
+    nullFiguresOnMap = () => {
+        this.figuresList.map(el=>{el.removeFrom(this.leafletElement)});
+    };
+
+    nullFiguresObject = () => {
+        this.figuresList = [];
+    };
+
     showPolygons = () => {
-        console.log(this.state.toolbarValues);
+        new Promise((resolve) => {
+            this.nullFiguresOnMap();
+            resolve(true);
+        }).then(()=>{
+            this.nullFiguresObject();
+        });
         axios.post('/api/search', this.state.toolbarValues)
             .then(res=>{
                 this.setState({polygons: Object.values(res.data.areas)});
@@ -129,7 +142,7 @@ class MapComponent extends Component {
                             const el = document.getElementsByClassName('fa-eye')[0];
                             el.classList.remove('fa-eye');
                             el.classList.add('fa-eye-slash');
-                            this.figuresList.map(el=>{el.removeFrom(this.leafletElement)});
+                            this.nullFiguresOnMap();
                         } else {
                             const el = document.getElementsByClassName('fa-eye-slash')[0];
                             el.classList.remove('fa-eye-slash');
