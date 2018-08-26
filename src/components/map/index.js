@@ -168,7 +168,6 @@ class MapComponent extends Component {
         values[field] = value;
         this.setState({toolbarValues: values});
         if (field === "city") {
-            console.log('ura', value);
             const provider = new OpenStreetMapProvider();
             provider.search({ query: value })
                 .then(results=>{
@@ -218,6 +217,14 @@ class MapComponent extends Component {
                         }
                     }
                 });
+                const provider = new OpenStreetMapProvider();
+                provider.search({ query: 'Kyiv' })
+                    .then(results=>{
+                        if (results[0].bounds) {
+                            this.leafletElement.fitBounds(results[0].bounds);
+                            this.leafletElement.setZoom(14);
+                        }
+                    });
                 break;
             }
             case 1: {
